@@ -2,7 +2,9 @@
 
 Utility tools for Unity.
 
-- 
+Available Tools:
+
+- Go to Tools > Rename to rename selected assets
 
 ## Installation
 

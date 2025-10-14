@@ -1,11 +1,12 @@
 {
   "name": "com.1mbitshorde.tool-system",
   "displayName": "1M Bits Horde-Tool System",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "unity": "6000.1",
   "description": "This package contains utility tools for Unity.",
-  "keywords": [ "Tools" ],
-  "dependencies": {},
+  "keywords": [
+    "Tools"
+  ],
   "homepage": "https://github.com/1mbitshorde/ToolSystem#readme",
   "repository": {
     "type": "git",
