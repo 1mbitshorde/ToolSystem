@@ -1,19 +1,16 @@
 {
-  "name": "com.1mbitshorde.[packagename]",
-  "displayName": "1M Bits Horde-[PackageName]",
+  "name": "com.1mbitshorde.tool-system",
+  "displayName": "1M Bits Horde-Tool System",
   "version": "0.1.0",
   "unity": "6000.1",
-  "description": "This package contains [...].",
-  "keywords": [
-    "",
-    ""
-  ],
+  "description": "This package contains utility tools for Unity.",
+  "keywords": [ "Tools" ],
   "dependencies": {},
-  "homepage": "https://github.com/1mbitshorde/[PACKAGE]#readme",
+  "homepage": "https://github.com/1mbitshorde/ToolSystem#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/1mbitshorde/[PACKAGE].git"
+    "url": "https://github.com/1mbitshorde/ToolSystem.git"
   },
-  "documentationUrl": "https://github.com/1mbitshorde/[PACKAGE]#readme",
-  "changelogUrl": "https://github.com/1mbitshorde/[PACKAGE]/CHANGELOG.md"
+  "documentationUrl": "https://github.com/1mbitshorde/ToolSystem#readme",
+  "changelogUrl": "https://github.com/1mbitshorde/ToolSystem/CHANGELOG.md"
 }
