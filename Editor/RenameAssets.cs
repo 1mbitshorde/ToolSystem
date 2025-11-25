@@ -14,7 +14,7 @@ namespace OneM.UtilitySystem.Editor
         private bool renameFullName;
         private bool replaceTextToggle;
 
-        [MenuItem("Tools/Rename")]
+        [MenuItem("Tools/OneM/Rename")]
         private static void ShowWindow() => GetWindow<RenameAssets>("Rename Assets");
 
         private void OnGUI()
