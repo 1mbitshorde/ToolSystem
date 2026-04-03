@@ -5,6 +5,7 @@ Utility tools for Unity.
 Available Tools:
 
 - Go to Tools > Rename to rename selected assets
+- Open a Build Scene: Right Click in the Main Toolbar > OneM > Scene Selector
 
 ## Installation
 
