@@ -55,7 +55,7 @@ namespace OneM.UtilitySystem.Editor
         private static bool IsBuildScene(string path)
         {
             var index = UnityEngine.SceneManagement.SceneUtility.GetBuildIndexByScenePath(path);
-            return index > 0;
+            return index >= 0;
         }
     }
 }
