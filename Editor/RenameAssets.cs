@@ -10,7 +10,10 @@ namespace OneM.UtilitySystem.Editor
     {
         private string assetPrefix;
         private string assetSuffix;
+        private string baseName;
+        private int startNumber;
         private string replaceTextOrigin;
+
         private bool renameFullName;
         private bool replaceTextToggle;
 
@@ -24,8 +27,7 @@ namespace OneM.UtilitySystem.Editor
                                     "- Rename full name of the selected assets. This will add a counter at the " +
                                     "beginning; \n" +
                                     "- Just add a prefix in front of the asset name; \n" +
-                                    "- And/or replace a text inside the asset name." +
-                                    "", MessageType.Info);
+                                    "- And/or replace a text inside the asset name.", MessageType.Info);
             EditorGUILayout.Space();
 
             renameFullName = EditorGUILayout.Toggle("Replace full text:", renameFullName);
@@ -36,21 +38,27 @@ namespace OneM.UtilitySystem.Editor
             EditorGUILayout.Space();
             EditorGUILayout.Separator();
             EditorGUILayout.Space();
-            EditorGUILayout.HelpBox("Replace the given name inside the asset name by the Prefix." +
-                                    "", MessageType.Info);
+            EditorGUILayout.HelpBox("Replace the given name inside the asset name by the Prefix.", MessageType.Info);
             replaceTextToggle = EditorGUILayout.Toggle("Replace only the given text:", replaceTextToggle);
             replaceTextOrigin = EditorGUILayout.TextField("Text to replace by Prefix:", replaceTextOrigin);
-            if (GUILayout.Button("Replace Text"))
-                ReplaceTextInSelectedAssets();
+            if (GUILayout.Button("Replace Text")) ReplaceTextInSelectedAssets();
 
             EditorGUILayout.Space();
             EditorGUILayout.Separator();
             EditorGUILayout.Space();
-            EditorGUILayout.HelpBox("Remove the given name inside the asset name by the Prefix." +
-                                    "", MessageType.Info);
+            EditorGUILayout.HelpBox("Remove the given name inside the asset name by the Prefix.", MessageType.Info);
             replaceTextOrigin = EditorGUILayout.TextField("Text to remove:", replaceTextOrigin);
-            if (GUILayout.Button("Remove Text"))
-                RemoveTextInSelectedAssets();
+            if (GUILayout.Button("Remove Text")) RemoveTextInSelectedAssets();
+
+            EditorGUILayout.Space();
+            EditorGUILayout.Separator();
+            EditorGUILayout.Space();
+            EditorGUILayout.HelpBox("Rename Selected Assets by enumerate them.\n" +
+                "e.g.: PV_POI_Look -> PV_POI_Look_00, PV_POI_Look_01, ...", MessageType.Info);
+            baseName = EditorGUILayout.TextField("Base Name", baseName);
+            startNumber = EditorGUILayout.IntField("Start", startNumber);
+
+            if (GUILayout.Button("Enumerate Assets")) EnumerateSelectedAssets();
         }
 
         private void RenameSelectedAssets()
@@ -96,6 +104,24 @@ namespace OneM.UtilitySystem.Editor
 
                 // Rename the asset
                 AssetDatabase.RenameAsset(assetPath, newName);
+            }
+        }
+
+        private void EnumerateSelectedAssets()
+        {
+            var count = startNumber;
+            foreach (Object obj in Selection.objects)
+            {
+                var newName = $"{baseName}_{count++:D2}";
+                var path = AssetDatabase.GetAssetPath(obj);
+                var isAsset = !string.IsNullOrEmpty(path);
+
+                if (isAsset) AssetDatabase.RenameAsset(path, newName);
+                else
+                {
+                    obj.name = newName;
+                    EditorUtility.SetDirty(obj);
+                }
             }
         }
     }
